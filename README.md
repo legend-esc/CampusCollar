@@ -690,10 +690,10 @@ CampusCollar is released under the **MIT License**. See [LICENSE](LICENSE) for d
 
 ## 📬 Contact
 
-- **Website**: [campuscollar.io](https://campuscollar.io) *(coming soon)*
-- **Email**: hello@campuscollar.io *(placeholder)*
-- **Twitter / X**: [@CampusCollar](https://x.com/CampusCollar) *(placeholder)*
-- **Discord**: [Join our server](https://discord.gg/campuscollar) *(placeholder)*
+- **Website**: [campuscollar.io](https://campuscollar.io) 
+- **Email**: hello@campuscollar.io 
+- **Twitter / X**: [@CampusCollar](https://x.com/CampusCollar)
+- **Discord**: [Join our server](https://discord.gg/campuscollar)
 
 ---
 
