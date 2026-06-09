@@ -1,0 +1,164 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum JobStatus {
+  POSTED
+  FUNDED
+  ACCEPTED
+  IN_PROGRESS
+  COMPLETED
+  PAID
+  DISPUTED
+  RESOLVED
+  CANCELLED
+  EXPIRED
+}
+
+enum UserRole {
+  STUDENT
+  STAFF
+  ADMIN
+}
+
+model User {
+  id             String    @id @default(cuid())
+  email          String    @unique
+  emailVerified  Boolean   @default(false)
+  name           String?
+  university     String?
+  role           UserRole  @default(STUDENT)
+  passwordHash   String
+  stellarPubkey  String?
+  trustScore     Float     @default(0)
+  ratingAvg      Float     @default(0)
+  completionRate Float     @default(0)
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  jobsPosted     Job[]           @relation("CustomerJobs")
+  jobsAccepted   Job[]           @relation("WorkerJobs")
+  badges         Badge[]         @relation("BadgeRecipient")
+  issuedBadges   Badge[]         @relation("BadgeIssuer")
+  skills         UserSkill[]
+  notifications  Notification[]
+  messages       Message[]
+  disputesRaised Dispute[]       @relation("DisputeRaisedBy")
+  payments       Payment[]
+}
+
+model Job {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  category    String?
+  amount      Float
+  status      JobStatus @default(POSTED)
+  location    String?
+  escrowAddr  String?
+  customerId  String
+  workerId    String?
+  deadline    DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  customer    User      @relation("CustomerJobs", fields: [customerId], references: [id])
+  worker      User?     @relation("WorkerJobs", fields: [workerId], references: [id])
+  payment     Payment?
+  messages    Message[]
+  dispute     Dispute?
+}
+
+model Payment {
+  id           String    @id @default(cuid())
+  jobId        String    @unique
+  amount       Float
+  fee          Float?
+  escrowAddr   String?
+  status       String    @default("PENDING")
+  nfcChallenge String?
+  releasedAt   DateTime?
+  customerId   String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  job          Job       @relation(fields: [jobId], references: [id])
+  customer     User      @relation(fields: [customerId], references: [id])
+}
+
+model BadgeType {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  description String?
+  iconUrl     String?
+  tier        Int      @default(1)
+  createdAt   DateTime @default(now())
+
+  badges      Badge[]
+}
+
+model Badge {
+  id          String    @id @default(cuid())
+  badgeTypeId String
+  userId      String
+  issuedById  String
+  issuedAt    DateTime  @default(now())
+  revokedAt   DateTime?
+
+  badgeType   BadgeType @relation(fields: [badgeTypeId], references: [id])
+  user        User      @relation("BadgeRecipient", fields: [userId], references: [id])
+  issuer      User      @relation("BadgeIssuer", fields: [issuedById], references: [id])
+}
+
+model Dispute {
+  id         String    @id @default(cuid())
+  jobId      String    @unique
+  raisedBy   String
+  reason     String?
+  status     String    @default("OPEN")
+  winnerId   String?
+  resolvedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  job        Job       @relation(fields: [jobId], references: [id])
+  raisedByUser User    @relation("DisputeRaisedBy", fields: [raisedBy], references: [id])
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  jobId     String
+  senderId  String
+  content   String
+  createdAt DateTime @default(now())
+
+  job       Job      @relation(fields: [jobId], references: [id])
+  sender    User     @relation(fields: [senderId], references: [id])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  type      String
+  title     String
+  body      String?
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model UserSkill {
+  id     String @id @default(cuid())
+  userId String
+  name   String
+
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@unique([userId, name])
+}
