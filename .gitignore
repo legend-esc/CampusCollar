@@ -1,4 +1,6 @@
 node_modules/
+target/
+test_snapshots/
 dist/
 build/
 .env
