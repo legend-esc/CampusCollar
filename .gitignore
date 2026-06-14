@@ -12,3 +12,4 @@ coverage/
 .prisma/
 server/prisma/migrations/
 **/target/
+plan.md
