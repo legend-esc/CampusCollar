@@ -1,0 +1,14 @@
+type Payment {
+  id: ID!
+  jobId: ID!
+  amount: Float!
+  escrowAddr: String
+  status: String!
+  nfcChallenge: String
+  releasedAt: String
+  createdAt: String!
+}
+
+extend type Mutation {
+  releasePayment(jobId: ID!, nfcToken: String!): Payment!
+}

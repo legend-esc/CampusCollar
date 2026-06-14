@@ -1,0 +1,17 @@
+type Badge {
+  id: ID!
+  name: String!
+  type: String!
+  issuer: User!
+  issuedAt: String!
+  revokedAt: String
+}
+
+extend type Query {
+  badges: [Badge!]!
+}
+
+extend type Mutation {
+  issueBadge(workerId: ID!, badgeType: String!): Badge!
+  revokeBadge(badgeId: ID!): Badge!
+}

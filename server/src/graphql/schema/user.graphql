@@ -1,0 +1,32 @@
+enum UserRole {
+  STUDENT
+  STAFF
+  ADMIN
+}
+
+type User {
+  id: ID!
+  email: String!
+  name: String
+  university: String
+  role: UserRole!
+  stellarPubkey: String
+  trustScore: Float!
+  ratingAvg: Float!
+  completionRate: Float!
+  jobsPosted: [Job!]!
+  jobsAccepted: [Job!]!
+  badges: [Badge!]!
+  skills: [UserSkill!]!
+  createdAt: String!
+}
+
+type UserSkill {
+  id: ID!
+  name: String!
+}
+
+type Query {
+  me: User
+  user(id: ID!): User
+}
