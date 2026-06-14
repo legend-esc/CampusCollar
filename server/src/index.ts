@@ -8,6 +8,7 @@ import { createLoaders, GraphQLContext } from './graphql/context.js'
 import { prisma } from './utils/db.js'
 import { config } from './config.js'
 import { verifyToken } from './utils/jwt.js'
+import { webhookRoutes } from './rest/webhook.js'
 
 const fastify = Fastify({
   logger: true,
@@ -25,6 +26,8 @@ await fastify.register(cors, {
   origin: config.clientUrl,
   credentials: true,
 })
+
+await fastify.register(webhookRoutes)
 
 await fastify.register(fastifyApollo(apollo), {
   context: async (request) => {
