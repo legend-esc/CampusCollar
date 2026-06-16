@@ -12,8 +12,9 @@ export const badgeResolvers = {
       if (!userId) throw new Error('Unauthorized')
       return badgeService.issueBadge(workerId, badgeType, userId)
     },
-    revokeBadge: async (_: any, { badgeId }: { badgeId: string }) => {
-      return badgeService.revokeBadge(badgeId)
+    revokeBadge: async (_: any, { badgeId }: { badgeId: string }, { userId }: GraphQLContext) => {
+      if (!userId) throw new Error('Unauthorized')
+      return badgeService.revokeBadge(badgeId, userId)
     },
   },
   Badge: {
