@@ -7,6 +7,5 @@
     "rootDir": "src",
     "types": ["vite/client"]
   },
-  "include": ["src"],
-  "references": [{ "path": "../server" }]
+  "include": ["src"]
 }
