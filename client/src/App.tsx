@@ -4,6 +4,12 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import Jobs from './pages/Jobs'
+import JobDetail from './pages/JobDetail'
+import Profile from './pages/Profile'
+import Wallet from './pages/Wallet'
+import Badges from './pages/Badges'
+import Settings from './pages/Settings'
 
 export default function App() {
   return (
@@ -14,38 +20,12 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route
-            path="/jobs"
-            element={
-              <ProtectedRoute>
-                <div className="p-8 text-center text-gray-500">Jobs page coming soon</div>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                <div className="p-8 text-center text-gray-500">Profile page coming soon</div>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/wallet"
-            element={
-              <ProtectedRoute>
-                <div className="p-8 text-center text-gray-500">Wallet page coming soon</div>
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/badges"
-            element={
-              <ProtectedRoute>
-                <div className="p-8 text-center text-gray-500">Badges page coming soon</div>
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/jobs" element={<ProtectedRoute><Jobs /></ProtectedRoute>} />
+          <Route path="/job/:id" element={<ProtectedRoute><JobDetail /></ProtectedRoute>} />
+          <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/wallet" element={<ProtectedRoute><Wallet /></ProtectedRoute>} />
+          <Route path="/badges" element={<ProtectedRoute><Badges /></ProtectedRoute>} />
+          <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
           <Route path="*" element={<div className="p-8 text-center text-gray-500">Page not found</div>} />
         </Routes>
       </main>
