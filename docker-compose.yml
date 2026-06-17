@@ -32,10 +32,44 @@ services:
     ports:
       - '8000:8000'
     environment:
-      ENABLE_SOROBAN_RPC: true
+      ENABLE_SOROBAN_RPC: 'true'
       NETWORK: local
     volumes:
       - stellardata:/opt/stellar
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -sf http://localhost:8000/health || exit 1']
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3001:3001'
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql://campuscollar:campuscollar_dev@postgres:5432/campuscollar
+      REDIS_URL: redis://redis:6379
+      STELLAR_RPC_URL: http://stellar-rpc:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: ['npm', 'run', 'start', '-w', 'server']
+
+  client:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - .:/app
+    ports:
+      - '5173:5173'
+    command: ['npm', 'run', 'dev', '-w', 'client', '--', '--host']
+    depends_on:
+      - server
 
 volumes:
   pgdata:
