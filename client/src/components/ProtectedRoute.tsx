@@ -1,17 +1,17 @@
-import { Navigate, useLocation } from 'react-router-dom'
-import { useAuthStore } from '../store/authStore'
+import { Navigate, useLocation } from 'react-router-dom';
+import { useAuthStore } from '../store/authStore';
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 export default function ProtectedRoute({ children }: Props) {
-  const { isAuthenticated } = useAuthStore()
-  const location = useLocation()
+  const { isAuthenticated } = useAuthStore();
+  const location = useLocation();
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" state={{ from: location }} replace />
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return <>{children}</>
+  return <>{children}</>;
 }

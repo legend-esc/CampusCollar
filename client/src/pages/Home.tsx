@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom'
-import Button from '../components/common/Button'
+import { Link } from 'react-router-dom';
+import Button from '../components/common/Button';
 
 const features = [
   {
     title: 'Safe Payments',
-    description: 'Smart contract escrow holds funds until work is verified. No more payment disputes.',
+    description:
+      'Smart contract escrow holds funds until work is verified. No more payment disputes.',
     icon: '🔒',
   },
   {
@@ -22,14 +23,14 @@ const features = [
     description: 'Earn reputation badges for reliability. Higher badges unlock higher job caps.',
     icon: '🏅',
   },
-]
+];
 
 const stats = [
   { label: 'Active Students', value: '500+' },
   { label: 'Jobs Completed', value: '1,200+' },
   { label: 'Universities', value: '15+' },
   { label: 'Avg. Payout Time', value: '< 24h' },
-]
+];
 
 export default function Home() {
   return (
@@ -38,12 +39,11 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-              Campus gigs,{' '}
-              <span className="text-campus-accent">secured by smart contracts</span>
+              Campus gigs, <span className="text-campus-accent">secured by smart contracts</span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-white/80 max-w-2xl">
-              Post and find jobs on campus with blockchain-secured payments, NFC tap-to-release,
-              and a reputation badge system. Only for .edu verified students and staff.
+              Post and find jobs on campus with blockchain-secured payments, NFC tap-to-release, and
+              a reputation badge system. Only for .edu verified students and staff.
             </p>
             <div className="flex gap-4 mt-8">
               <Link to="/signup">
@@ -52,7 +52,11 @@ export default function Home() {
                 </Button>
               </Link>
               <Link to="/jobs">
-                <Button variant="ghost" size="lg" className="text-white border border-white/30 hover:bg-white/10">
+                <Button
+                  variant="ghost"
+                  size="lg"
+                  className="text-white border border-white/30 hover:bg-white/10"
+                >
                   Browse Jobs
                 </Button>
               </Link>
@@ -113,5 +117,5 @@ export default function Home() {
         </div>
       </section>
     </div>
-  )
+  );
 }

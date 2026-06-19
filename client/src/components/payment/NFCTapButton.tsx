@@ -46,18 +46,27 @@ export default function NFCTapButton({ jobId, onSuccess, disabled }: NFCTapButto
           {reading ? 'Scanning NFC… (tap to cancel)' : '📱 Tap to Release Payment'}
         </Button>
       ) : (
-        <Button onClick={() => setShowFallback(true)} disabled={disabled} className="w-full" size="lg">
+        <Button
+          onClick={() => setShowFallback(true)}
+          disabled={disabled}
+          className="w-full"
+          size="lg"
+        >
           🔢 Enter Release Code
         </Button>
       )}
       {(nfcError || error) && (
         <div className="flex items-center justify-between text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">
           <span>{nfcError || error}</span>
-          <button onClick={() => setShowFallback(true)} className="underline ml-2">Use code instead</button>
+          <button onClick={() => setShowFallback(true)} className="underline ml-2">
+            Use code instead
+          </button>
         </div>
       )}
       <Modal open={showFallback} onClose={() => setShowFallback(false)} title="Enter Release Code">
-        <p className="text-sm text-gray-600 mb-3">Ask the worker to show you the 6-digit code on their screen.</p>
+        <p className="text-sm text-gray-600 mb-3">
+          Ask the worker to show you the 6-digit code on their screen.
+        </p>
         <input
           className="w-full text-center text-3xl tracking-widest font-mono border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-campus-primary"
           maxLength={6}

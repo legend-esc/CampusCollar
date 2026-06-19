@@ -62,12 +62,12 @@ chore: bump prisma to 5.12
 
 ## Branch Strategy
 
-| Branch | Purpose |
-|---|---|
-| `main` | Stable, always deployable |
-| `feat/*` | New features |
-| `fix/*` | Bug fixes |
-| `chore/*` | Maintenance, deps |
+| Branch    | Purpose                   |
+| --------- | ------------------------- |
+| `main`    | Stable, always deployable |
+| `feat/*`  | New features              |
+| `fix/*`   | Bug fixes                 |
+| `chore/*` | Maintenance, deps         |
 
 Do not push directly to `main`. Open a PR.
 

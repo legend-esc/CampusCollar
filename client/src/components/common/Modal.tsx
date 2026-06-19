@@ -1,33 +1,33 @@
-import { useEffect, useCallback, ReactNode } from 'react'
-import { createPortal } from 'react-dom'
+import { useEffect, useCallback, ReactNode } from 'react';
+import { createPortal } from 'react-dom';
 
 interface ModalProps {
-  open: boolean
-  onClose: () => void
-  title?: string
-  children: ReactNode
+  open: boolean;
+  onClose: () => void;
+  title?: string;
+  children: ReactNode;
 }
 
 export default function Modal({ open, onClose, title, children }: ModalProps) {
   const handleEscape = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose()
+      if (e.key === 'Escape') onClose();
     },
-    [onClose]
-  )
+    [onClose],
+  );
 
   useEffect(() => {
     if (open) {
-      document.addEventListener('keydown', handleEscape)
-      document.body.style.overflow = 'hidden'
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
     }
     return () => {
-      document.removeEventListener('keydown', handleEscape)
-      document.body.style.overflow = ''
-    }
-  }, [open, handleEscape])
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = '';
+    };
+  }, [open, handleEscape]);
 
-  if (!open) return null
+  if (!open) return null;
 
   return createPortal(
     <div className="fixed inset-0 z-50 flex items-center justify-center">
@@ -42,7 +42,12 @@ export default function Modal({ open, onClose, title, children }: ModalProps) {
               aria-label="Close"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           </div>
@@ -50,6 +55,6 @@ export default function Modal({ open, onClose, title, children }: ModalProps) {
         <div className="p-6">{children}</div>
       </div>
     </div>,
-    document.body
-  )
+    document.body,
+  );
 }

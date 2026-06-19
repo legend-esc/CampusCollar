@@ -4,32 +4,32 @@
 
 ### Auth
 
-| Method | Path | Auth | Description |
-|---|---|---|---|
-| POST | `/api/auth/signup` | — | Register with `.edu` email |
-| POST | `/api/auth/verify-email` | — | Confirm OTP |
-| POST | `/api/auth/login` | — | Get access + refresh tokens |
-| POST | `/api/auth/refresh` | — | Rotate tokens |
-| GET | `/api/auth/me` | Bearer | Current user profile |
+| Method | Path                     | Auth   | Description                 |
+| ------ | ------------------------ | ------ | --------------------------- |
+| POST   | `/api/auth/signup`       | —      | Register with `.edu` email  |
+| POST   | `/api/auth/verify-email` | —      | Confirm OTP                 |
+| POST   | `/api/auth/login`        | —      | Get access + refresh tokens |
+| POST   | `/api/auth/refresh`      | —      | Rotate tokens               |
+| GET    | `/api/auth/me`           | Bearer | Current user profile        |
 
 ### Upload
 
-| Method | Path | Auth | Description |
-|---|---|---|---|
-| POST | `/api/upload` | Bearer | Upload job photo (max 5 MB, image/jpeg or image/png) |
+| Method | Path          | Auth   | Description                                          |
+| ------ | ------------- | ------ | ---------------------------------------------------- |
+| POST   | `/api/upload` | Bearer | Upload job photo (max 5 MB, image/jpeg or image/png) |
 
 ### Webhooks
 
-| Method | Path | Description |
-|---|---|---|
-| POST | `/api/webhooks/stellar` | Stellar account event listener |
-| POST | `/api/webhooks/ramp` | Fiat on-ramp callback |
+| Method | Path                    | Description                    |
+| ------ | ----------------------- | ------------------------------ |
+| POST   | `/api/webhooks/stellar` | Stellar account event listener |
+| POST   | `/api/webhooks/ramp`    | Fiat on-ramp callback          |
 
 ### Stellar (proxy)
 
-| Method | Path | Auth | Description |
-|---|---|---|---|
-| GET | `/api/stellar/balance/:pubkey` | — | Get USDC balance for a Stellar address |
+| Method | Path                           | Auth | Description                            |
+| ------ | ------------------------------ | ---- | -------------------------------------- |
+| GET    | `/api/stellar/balance/:pubkey` | —    | Get USDC balance for a Stellar address |
 
 ---
 
@@ -129,17 +129,17 @@ input JobFilter {
 
 ### Events (server → client)
 
-| Type | Payload | Description |
-|---|---|---|
-| `CONNECTED` | `{ jobId }` | Connection confirmed |
-| `JOB_STATUS` | `{ jobId, status }` | Job state changed |
-| `NEW_MESSAGE` | `Message` | New chat message |
-| `TYPING` | `{ userId }` | User is typing |
-| `TYPING_STOP` | `{ userId }` | User stopped typing |
+| Type          | Payload             | Description          |
+| ------------- | ------------------- | -------------------- |
+| `CONNECTED`   | `{ jobId }`         | Connection confirmed |
+| `JOB_STATUS`  | `{ jobId, status }` | Job state changed    |
+| `NEW_MESSAGE` | `Message`           | New chat message     |
+| `TYPING`      | `{ userId }`        | User is typing       |
+| `TYPING_STOP` | `{ userId }`        | User stopped typing  |
 
 ### Events (client → server)
 
-| Type | Payload | Description |
-|---|---|---|
+| Type     | Payload     | Description                |
+| -------- | ----------- | -------------------------- |
 | `TYPING` | `{ jobId }` | Broadcast typing indicator |
-| `PING` | — | Keepalive |
+| `PING`   | —           | Keepalive                  |

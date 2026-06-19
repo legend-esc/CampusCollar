@@ -1,4 +1,4 @@
-import { prisma } from '../utils/db.js'
+import { prisma } from '../utils/db.js';
 
 export const notificationService = {
   async notify(userId: string, title: string, body: string, type: string = 'INFO') {
@@ -8,24 +8,24 @@ export const notificationService = {
         title,
         body,
         type,
-        read: false
-      }
-    })
+        read: false,
+      },
+    });
   },
 
   async notifyJobStatus(jobId: string, status: string) {
     const job = await prisma.job.findUnique({
       where: { id: jobId },
-      include: { customer: true, worker: true }
-    })
+      include: { customer: true, worker: true },
+    });
 
-    if (!job) return
+    if (!job) return;
 
-    const message = `Job "${job.title}" status changed to ${status}`
-    
-    await this.notify(job.customerId, 'Job Update', message)
+    const message = `Job "${job.title}" status changed to ${status}`;
+
+    await this.notify(job.customerId, 'Job Update', message);
     if (job.workerId) {
-      await this.notify(job.workerId, 'Job Update', message)
+      await this.notify(job.workerId, 'Job Update', message);
     }
-  }
-}
+  },
+};

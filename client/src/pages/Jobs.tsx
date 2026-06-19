@@ -30,13 +30,19 @@ export default function Jobs() {
             <p className="text-xs font-semibold text-gray-500 uppercase mb-2">Category</p>
             <div className="space-y-1">
               <label className="flex items-center gap-2 text-sm cursor-pointer">
-                <input type="radio" name="cat" checked={!filters.category} onChange={() => setFilters({ category: undefined })} />
+                <input
+                  type="radio"
+                  name="cat"
+                  checked={!filters.category}
+                  onChange={() => setFilters({ category: undefined })}
+                />
                 All
               </label>
               {JOB_CATEGORIES.map((c) => (
                 <label key={c.value} className="flex items-center gap-2 text-sm cursor-pointer">
                   <input
-                    type="radio" name="cat"
+                    type="radio"
+                    name="cat"
                     checked={filters.category === c.value}
                     onChange={() => setFilters({ category: c.value as JobCategory })}
                   />
@@ -50,13 +56,19 @@ export default function Jobs() {
             <p className="text-xs font-semibold text-gray-500 uppercase mb-2">Status</p>
             <div className="space-y-1">
               <label className="flex items-center gap-2 text-sm cursor-pointer">
-                <input type="radio" name="status" checked={!filters.status} onChange={() => setFilters({ status: undefined })} />
+                <input
+                  type="radio"
+                  name="status"
+                  checked={!filters.status}
+                  onChange={() => setFilters({ status: undefined })}
+                />
                 All
               </label>
               {STATUSES.map((s) => (
                 <label key={s} className="flex items-center gap-2 text-sm cursor-pointer">
                   <input
-                    type="radio" name="status"
+                    type="radio"
+                    name="status"
                     checked={filters.status === s}
                     onChange={() => setFilters({ status: s })}
                   />
@@ -69,7 +81,10 @@ export default function Jobs() {
           <div>
             <p className="text-xs font-semibold text-gray-500 uppercase mb-2">Max Price</p>
             <input
-              type="range" min={5} max={150} step={5}
+              type="range"
+              min={5}
+              max={150}
+              step={5}
               value={filters.maxAmount ?? 150}
               onChange={(e) => setFilters({ maxAmount: Number(e.target.value) })}
               className="w-full accent-campus-primary"
@@ -77,7 +92,9 @@ export default function Jobs() {
             <p className="text-xs text-gray-500 mt-1">Up to ${filters.maxAmount ?? 150}</p>
           </div>
 
-          <button onClick={resetFilters} className="text-xs text-gray-400 underline">Reset filters</button>
+          <button onClick={resetFilters} className="text-xs text-gray-400 underline">
+            Reset filters
+          </button>
         </aside>
 
         {/* Job list */}
@@ -97,7 +114,10 @@ export default function Jobs() {
 
       <Modal open={showForm} onClose={() => setShowForm(false)} title="Post a New Job">
         <JobForm
-          onSuccess={(id) => { setShowForm(false); navigate(`/job/${id}`); }}
+          onSuccess={(id) => {
+            setShowForm(false);
+            navigate(`/job/${id}`);
+          }}
           onCancel={() => setShowForm(false)}
         />
       </Modal>

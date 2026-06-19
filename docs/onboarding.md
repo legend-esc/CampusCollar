@@ -27,12 +27,12 @@
 
 ## Badge Tiers
 
-| Level | Badges | Job Cap |
-|---|---|---|
-| Bronze | 0 | $100 |
-| Silver | 1 | $200 |
-| Gold | 3 | $250 |
-| Platinum | 5+ | $300 |
+| Level    | Badges | Job Cap |
+| -------- | ------ | ------- |
+| Bronze   | 0      | $100    |
+| Silver   | 1      | $200    |
+| Gold     | 3      | $250    |
+| Platinum | 5+     | $300    |
 
 ## Wallet Setup
 

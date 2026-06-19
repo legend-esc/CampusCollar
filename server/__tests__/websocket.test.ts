@@ -15,13 +15,25 @@ let app: ReturnType<typeof Fastify>;
 describe('WebSocket handler', () => {
   beforeAll(async () => {
     const user = await prisma.user.create({
-      data: { email: `ws_${Date.now()}@campus.edu`, passwordHash: 'x', name: 'WS', university: 'U', emailVerified: true },
+      data: {
+        email: `ws_${Date.now()}@campus.edu`,
+        passwordHash: 'x',
+        name: 'WS',
+        university: 'U',
+        emailVerified: true,
+      },
     });
     userId = user.id;
     token = signAccessToken({ userId, email: user.email, role: user.role });
 
     const job = await prisma.job.create({
-      data: { title: 'WS test', description: 'x', amount: 10, customerId: userId, status: 'ACCEPTED' },
+      data: {
+        title: 'WS test',
+        description: 'x',
+        amount: 10,
+        customerId: userId,
+        status: 'ACCEPTED',
+      },
     });
     jobId = job.id;
 

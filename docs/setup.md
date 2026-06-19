@@ -40,19 +40,19 @@ The GraphQL playground is at http://localhost:3000/api/graphql.
 
 ## Environment Variables
 
-| Variable | Required | Description |
-|---|---|---|
-| `DATABASE_URL` | ✅ | PostgreSQL connection string |
-| `REDIS_URL` | ✅ | Redis connection string |
-| `JWT_SECRET` | ✅ | Secret for signing JWTs |
-| `STELLAR_RPC_URL` | ✅ | Stellar RPC endpoint |
-| `STELLAR_NETWORK_PASSPHRASE` | ✅ | Network passphrase (e.g. `Test SDF Network ; September 2015`) |
-| `ESCROW_CONTRACT_ID` | ✅ | Deployed escrow contract address |
-| `BADGE_REGISTRY_CONTRACT_ID` | ✅ | Deployed badge registry address |
-| `JOB_CAP_CONTRACT_ID` | ✅ | Deployed job cap contract address |
-| `STELLAR_ENCRYPTION_KEY` | ✅ | 32-byte hex key for encrypting Stellar secrets |
-| `PORT` | ❌ | Server port (default: 3001) |
-| `CLIENT_URL` | ❌ | CORS origin (default: http://localhost:5173) |
+| Variable                     | Required | Description                                                   |
+| ---------------------------- | -------- | ------------------------------------------------------------- |
+| `DATABASE_URL`               | ✅       | PostgreSQL connection string                                  |
+| `REDIS_URL`                  | ✅       | Redis connection string                                       |
+| `JWT_SECRET`                 | ✅       | Secret for signing JWTs                                       |
+| `STELLAR_RPC_URL`            | ✅       | Stellar RPC endpoint                                          |
+| `STELLAR_NETWORK_PASSPHRASE` | ✅       | Network passphrase (e.g. `Test SDF Network ; September 2015`) |
+| `ESCROW_CONTRACT_ID`         | ✅       | Deployed escrow contract address                              |
+| `BADGE_REGISTRY_CONTRACT_ID` | ✅       | Deployed badge registry address                               |
+| `JOB_CAP_CONTRACT_ID`        | ✅       | Deployed job cap contract address                             |
+| `STELLAR_ENCRYPTION_KEY`     | ✅       | 32-byte hex key for encrypting Stellar secrets                |
+| `PORT`                       | ❌       | Server port (default: 3001)                                   |
+| `CLIENT_URL`                 | ❌       | CORS origin (default: http://localhost:5173)                  |
 
 ## Running Tests
 

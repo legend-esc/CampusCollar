@@ -29,8 +29,20 @@ export default function Wallet() {
 
       {connected && (
         <div className="grid grid-cols-2 gap-3">
-          <Button variant="secondary" className="w-full" onClick={() => alert('Deposit coming soon')}>⬇️ Deposit</Button>
-          <Button variant="secondary" className="w-full" onClick={() => alert('Withdraw coming soon')}>⬆️ Withdraw</Button>
+          <Button
+            variant="secondary"
+            className="w-full"
+            onClick={() => alert('Deposit coming soon')}
+          >
+            ⬇️ Deposit
+          </Button>
+          <Button
+            variant="secondary"
+            className="w-full"
+            onClick={() => alert('Withdraw coming soon')}
+          >
+            ⬆️ Withdraw
+          </Button>
         </div>
       )}
 
@@ -39,7 +51,11 @@ export default function Wallet() {
           <h2 className="font-semibold text-gray-800">Transaction History</h2>
         </div>
         {txLoading ? (
-          <div className="p-5 space-y-3">{Array.from({ length: 3 }).map((_, i) => <div key={i} className="h-10 bg-gray-100 rounded animate-pulse" />)}</div>
+          <div className="p-5 space-y-3">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="h-10 bg-gray-100 rounded animate-pulse" />
+            ))}
+          </div>
         ) : !txns?.length ? (
           <p className="p-5 text-sm text-gray-400 text-center">No transactions yet.</p>
         ) : (
@@ -48,9 +64,13 @@ export default function Wallet() {
               <li key={tx.id} className="flex items-center justify-between px-5 py-3 text-sm">
                 <div>
                   <p className="font-medium text-gray-800">{tx.description}</p>
-                  <p className="text-xs text-gray-400">{new Date(tx.createdAt).toLocaleDateString()}</p>
+                  <p className="text-xs text-gray-400">
+                    {new Date(tx.createdAt).toLocaleDateString()}
+                  </p>
                 </div>
-                <span className={`font-bold ${tx.type === 'CREDIT' ? 'text-green-600' : 'text-red-500'}`}>
+                <span
+                  className={`font-bold ${tx.type === 'CREDIT' ? 'text-green-600' : 'text-red-500'}`}
+                >
                   {tx.type === 'CREDIT' ? '+' : '-'}${tx.amount.toFixed(2)}
                 </span>
               </li>

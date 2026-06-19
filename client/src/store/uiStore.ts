@@ -1,14 +1,14 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
 interface UIState {
-  sidebarOpen: boolean
-  modalOpen: string | null
-  toasts: Array<{ id: string; message: string; type: 'success' | 'error' | 'info' }>
-  toggleSidebar: () => void
-  openModal: (id: string) => void
-  closeModal: () => void
-  addToast: (message: string, type: 'success' | 'error' | 'info') => void
-  removeToast: (id: string) => void
+  sidebarOpen: boolean;
+  modalOpen: string | null;
+  toasts: Array<{ id: string; message: string; type: 'success' | 'error' | 'info' }>;
+  toggleSidebar: () => void;
+  openModal: (id: string) => void;
+  closeModal: () => void;
+  addToast: (message: string, type: 'success' | 'error' | 'info') => void;
+  removeToast: (id: string) => void;
 }
 
 export const useUIStore = create<UIState>((set) => ({
@@ -23,12 +23,12 @@ export const useUIStore = create<UIState>((set) => ({
   closeModal: () => set({ modalOpen: null }),
 
   addToast: (message, type) => {
-    const id = crypto.randomUUID()
-    set((s) => ({ toasts: [...s.toasts, { id, message, type }] }))
+    const id = crypto.randomUUID();
+    set((s) => ({ toasts: [...s.toasts, { id, message, type }] }));
     setTimeout(() => {
-      set((s) => ({ toasts: s.toasts.filter((t) => t.id !== id) }))
-    }, 5000)
+      set((s) => ({ toasts: s.toasts.filter((t) => t.id !== id) }));
+    }, 5000);
   },
 
   removeToast: (id) => set((s) => ({ toasts: s.toasts.filter((t) => t.id !== id) })),
-}))
+}));

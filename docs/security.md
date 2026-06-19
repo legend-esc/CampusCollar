@@ -20,14 +20,14 @@
 
 ## Anti-Fraud Measures
 
-| Measure | Details |
-|---|---|
-| New worker cap | First 3 jobs capped at $50 |
-| Geolocation check | Worker must be on/near campus to accept jobs |
-| Photo evidence | "After" photo required before payment release |
-| Rate limiting | Max 3 job accepts per day per worker |
-| Cooling period | New accounts wait 24 hours before first job |
-| Dispute ratio monitoring | High dispute ratio triggers manual review |
+| Measure                  | Details                                       |
+| ------------------------ | --------------------------------------------- |
+| New worker cap           | First 3 jobs capped at $50                    |
+| Geolocation check        | Worker must be on/near campus to accept jobs  |
+| Photo evidence           | "After" photo required before payment release |
+| Rate limiting            | Max 3 job accepts per day per worker          |
+| Cooling period           | New accounts wait 24 hours before first job   |
+| Dispute ratio monitoring | High dispute ratio triggers manual review     |
 
 ## Data Privacy
 

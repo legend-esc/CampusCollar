@@ -1,26 +1,26 @@
-import { useState, FormEvent } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-import Button from '../components/common/Button'
-import Input from '../components/common/Input'
-import { useAuthStore } from '../store/authStore'
+import { useState, FormEvent } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import Button from '../components/common/Button';
+import Input from '../components/common/Input';
+import { useAuthStore } from '../store/authStore';
 
 export default function Login() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const { login, isLoading, error, clearError } = useAuthStore()
-  const navigate = useNavigate()
-  const location = useLocation()
-  const from = (location.state as any)?.from?.pathname || '/'
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login, isLoading, error, clearError } = useAuthStore();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = (location.state as any)?.from?.pathname || '/';
 
   const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await login(email, password)
-      navigate(from, { replace: true })
+      await login(email, password);
+      navigate(from, { replace: true });
     } catch {
       // error handled by store
     }
-  }
+  };
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
@@ -71,5 +71,5 @@ export default function Login() {
         </p>
       </div>
     </div>
-  )
+  );
 }

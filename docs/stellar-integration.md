@@ -3,6 +3,7 @@
 ## Overview
 
 CampusCollar uses Stellar for:
+
 - **USDC escrow** — locked in a Soroban smart contract at job acceptance
 - **Instant settlement** — 3–5 second finality on payment release
 - **Badge registry** — on-chain record of verified skills
@@ -10,11 +11,11 @@ CampusCollar uses Stellar for:
 
 ## Network Configuration
 
-| Environment | Network | RPC URL |
-|---|---|---|
-| Development | Local (`stellar/quickstart`) | `http://localhost:8000` |
-| Staging | Testnet | `https://soroban-testnet.stellar.org` |
-| Production | Mainnet | `https://soroban.stellar.org` |
+| Environment | Network                      | RPC URL                               |
+| ----------- | ---------------------------- | ------------------------------------- |
+| Development | Local (`stellar/quickstart`) | `http://localhost:8000`               |
+| Staging     | Testnet                      | `https://soroban-testnet.stellar.org` |
+| Production  | Mainnet                      | `https://soroban.stellar.org`         |
 
 Set `STELLAR_RPC_URL` and `STELLAR_NETWORK` in `.env`.
 

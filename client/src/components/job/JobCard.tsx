@@ -12,8 +12,14 @@ function timeAgo(date: string) {
 }
 
 const CATEGORY_ICONS: Record<string, string> = {
-  TUTORING: '📚', DELIVERY: '📦', TECH_HELP: '💻',
-  CLEANING: '🧹', MOVING: '📦', DESIGN: '🎨', WRITING: '✍️', OTHER: '🔧',
+  TUTORING: '📚',
+  DELIVERY: '📦',
+  TECH_HELP: '💻',
+  CLEANING: '🧹',
+  MOVING: '📦',
+  DESIGN: '🎨',
+  WRITING: '✍️',
+  OTHER: '🔧',
 };
 
 export default function JobCard({ job }: { job: Job }) {
@@ -27,7 +33,9 @@ export default function JobCard({ job }: { job: Job }) {
           <span className="text-xl">{CATEGORY_ICONS[job.category] ?? '🔧'}</span>
           <h3 className="font-semibold text-gray-900 truncate">{job.title}</h3>
         </div>
-        <span className={`shrink-0 text-xs font-medium px-2 py-1 rounded-full ${JOB_STATUS_COLORS[job.status]}`}>
+        <span
+          className={`shrink-0 text-xs font-medium px-2 py-1 rounded-full ${JOB_STATUS_COLORS[job.status]}`}
+        >
           {JOB_STATUS_LABELS[job.status]}
         </span>
       </div>
@@ -39,7 +47,9 @@ export default function JobCard({ job }: { job: Job }) {
           <span>{timeAgo(job.createdAt)}</span>
         </div>
       </div>
-      <div className="mt-2 text-xs text-gray-400">by {job.customer.name} · {job.customer.university}</div>
+      <div className="mt-2 text-xs text-gray-400">
+        by {job.customer.name} · {job.customer.university}
+      </div>
     </Link>
   );
 }

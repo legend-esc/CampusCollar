@@ -1,7 +1,7 @@
-import { userResolvers } from './user.js'
-import { jobResolvers } from './job.js'
-import { paymentResolvers } from './payment.js'
-import { badgeResolvers } from './badge.js'
+import { userResolvers } from './user.js';
+import { jobResolvers } from './job.js';
+import { paymentResolvers } from './payment.js';
+import { badgeResolvers } from './badge.js';
 
 export const resolvers = {
   Query: {
@@ -19,4 +19,4 @@ export const resolvers = {
   Job: jobResolvers.Job,
   Message: jobResolvers.Message,
   Badge: badgeResolvers.Badge,
-}
+};

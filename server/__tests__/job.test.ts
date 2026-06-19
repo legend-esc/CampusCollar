@@ -41,7 +41,7 @@ describe('Job lifecycle', () => {
   it('createJob — creates a POSTED job', async () => {
     const job = await jobService.createJob(
       { title: 'Fix sink', description: 'Clogged drain', amount: 40 },
-      userId
+      userId,
     );
     expect(job.status).toBe('POSTED');
     expect(job.customerId).toBe(userId);
@@ -68,7 +68,7 @@ describe('Job lifecycle', () => {
     // Create a fresh job for dispute test
     const job2 = await jobService.createJob(
       { title: 'Dispute test', description: 'x', amount: 30 },
-      userId
+      userId,
     );
     await jobService.fundJob(job2.id);
     await jobService.acceptJob(job2.id, workerId);
@@ -81,7 +81,7 @@ describe('Job lifecycle', () => {
   it('cancelJob — transitions to CANCELLED', async () => {
     const job3 = await jobService.createJob(
       { title: 'Cancel test', description: 'x', amount: 20 },
-      userId
+      userId,
     );
     const cancelled = await jobService.cancelJob(job3.id);
     expect(cancelled.status).toBe('CANCELLED');

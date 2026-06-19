@@ -9,11 +9,20 @@ const BADGE_COLORS: Record<string, string> = {
 };
 
 const BADGE_ICONS: Record<string, string> = {
-  RELIABLE: '🛠️', FAST_DELIVERY: '⚡', TOP_RATED: '⭐',
-  VERIFIED_STUDENT: '🎓', VERIFIED_STAFF: '🏛️',
+  RELIABLE: '🛠️',
+  FAST_DELIVERY: '⚡',
+  TOP_RATED: '⭐',
+  VERIFIED_STUDENT: '🎓',
+  VERIFIED_STAFF: '🏛️',
 };
 
-export default function BadgeDisplay({ badges, size = 'sm' }: { badges: UserBadge[]; size?: 'sm' | 'lg' }) {
+export default function BadgeDisplay({
+  badges,
+  size = 'sm',
+}: {
+  badges: UserBadge[];
+  size?: 'sm' | 'lg';
+}) {
   if (!badges.length) return <span className="text-xs text-gray-400">No badges yet</span>;
   return (
     <div className="flex flex-wrap gap-2">

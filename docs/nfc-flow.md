@@ -54,10 +54,10 @@ When `NDEFReader` is unavailable (unsupported browser, older iPhone):
 
 ## Security Properties
 
-| Property | Guarantee |
-|---|---|
-| Single-use | Nonce incremented on-chain after each valid release |
-| Replay-proof | Old challenges rejected by on-chain nonce check |
-| Co-location | Customer must physically tap the worker's NFC tag |
+| Property      | Guarantee                                                                  |
+| ------------- | -------------------------------------------------------------------------- |
+| Single-use    | Nonce incremented on-chain after each valid release                        |
+| Replay-proof  | Old challenges rejected by on-chain nonce check                            |
+| Co-location   | Customer must physically tap the worker's NFC tag                          |
 | Escrow-atomic | USDC transfer and challenge invalidation happen in one Soroban transaction |
-| Offline-safe | Pre-signed transaction submitted when connectivity returns |
+| Offline-safe  | Pre-signed transaction submitted when connectivity returns                 |

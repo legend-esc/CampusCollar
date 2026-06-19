@@ -24,13 +24,24 @@ export default function Profile() {
 
   const update = useMutation({
     mutationFn: () => graphql(UPDATE_ME, { input: form }),
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ['me'] }); setEditing(false); },
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['me'] });
+      setEditing(false);
+    },
   });
 
-  if (isLoading) return <div className="max-w-xl mx-auto px-4 py-12 space-y-4"><div className="h-48 bg-gray-100 rounded-xl animate-pulse" /></div>;
+  if (isLoading)
+    return (
+      <div className="max-w-xl mx-auto px-4 py-12 space-y-4">
+        <div className="h-48 bg-gray-100 rounded-xl animate-pulse" />
+      </div>
+    );
   if (!user) return null;
 
-  const startEdit = () => { setForm({ name: user.name, university: user.university }); setEditing(true); };
+  const startEdit = () => {
+    setForm({ name: user.name, university: user.university });
+    setEditing(true);
+  };
 
   return (
     <div className="max-w-xl mx-auto px-4 py-8 space-y-6">
@@ -39,15 +50,29 @@ export default function Profile() {
       {editing ? (
         <div className="bg-white border border-gray-200 rounded-xl p-5 space-y-4">
           <h2 className="font-semibold text-gray-800">Edit Profile</h2>
-          <Input label="Name" value={form.name} onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))} />
-          <Input label="University" value={form.university} onChange={(e) => setForm((f) => ({ ...f, university: e.target.value }))} />
+          <Input
+            label="Name"
+            value={form.name}
+            onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
+          />
+          <Input
+            label="University"
+            value={form.university}
+            onChange={(e) => setForm((f) => ({ ...f, university: e.target.value }))}
+          />
           <div className="flex gap-3">
-            <Button onClick={() => update.mutate()} loading={update.isPending}>Save</Button>
-            <Button variant="secondary" onClick={() => setEditing(false)}>Cancel</Button>
+            <Button onClick={() => update.mutate()} loading={update.isPending}>
+              Save
+            </Button>
+            <Button variant="secondary" onClick={() => setEditing(false)}>
+              Cancel
+            </Button>
           </div>
         </div>
       ) : (
-        <Button variant="secondary" onClick={startEdit} className="w-full">Edit Profile</Button>
+        <Button variant="secondary" onClick={startEdit} className="w-full">
+          Edit Profile
+        </Button>
       )}
 
       <div className="bg-white border border-gray-200 rounded-xl p-5">

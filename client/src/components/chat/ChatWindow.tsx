@@ -25,7 +25,9 @@ export default function ChatWindow({ jobId, initialMessages }: ChatWindowProps) 
 
   useEffect(() => {
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
-    const ws = new WebSocket(`${protocol}://${window.location.host}/ws?token=${token}&jobId=${jobId}`);
+    const ws = new WebSocket(
+      `${protocol}://${window.location.host}/ws?token=${token}&jobId=${jobId}`,
+    );
     wsRef.current = ws;
 
     ws.onmessage = (e) => {
@@ -60,14 +62,18 @@ export default function ChatWindow({ jobId, initialMessages }: ChatWindowProps) 
   };
 
   const onKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
-    else wsRef.current?.send(JSON.stringify({ type: 'TYPING', jobId }));
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      send();
+    } else wsRef.current?.send(JSON.stringify({ type: 'TYPING', jobId }));
   };
 
   return (
     <div className="flex flex-col h-80 border border-gray-200 rounded-xl overflow-hidden">
       <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-white">
-        {messages.map((m) => <MessageBubble key={m.id} message={m} />)}
+        {messages.map((m) => (
+          <MessageBubble key={m.id} message={m} />
+        ))}
         {typing && <div className="text-xs text-gray-400 italic">typing…</div>}
         <div ref={bottomRef} />
       </div>

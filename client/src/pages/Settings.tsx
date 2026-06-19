@@ -11,7 +11,11 @@ interface Toggle {
 const NOTIFICATION_TOGGLES: Toggle[] = [
   { key: 'jobAlerts', label: 'Job Alerts', description: 'New jobs matching your skills' },
   { key: 'messages', label: 'Messages', description: 'New chat messages' },
-  { key: 'paymentUpdates', label: 'Payment Updates', description: 'Escrow and payout notifications' },
+  {
+    key: 'paymentUpdates',
+    label: 'Payment Updates',
+    description: 'Escrow and payout notifications',
+  },
   { key: 'badgeUpdates', label: 'Badge Updates', description: 'Verification results' },
 ];
 
@@ -53,7 +57,9 @@ export default function Settings() {
               role="switch"
               aria-checked={prefs[t.key]}
             >
-              <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${prefs[t.key] ? 'translate-x-5' : 'translate-x-0'}`} />
+              <span
+                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${prefs[t.key] ? 'translate-x-5' : 'translate-x-0'}`}
+              />
             </button>
           </div>
         ))}
@@ -62,21 +68,36 @@ export default function Settings() {
       {/* Privacy */}
       <section className="bg-white border border-gray-200 rounded-xl p-5 space-y-3">
         <h2 className="font-semibold text-gray-800">Privacy</h2>
-        <p className="text-sm text-gray-500">Your data is used only to operate CampusCollar. We never sell your information. Job photos are encrypted and stored on IPFS.</p>
+        <p className="text-sm text-gray-500">
+          Your data is used only to operate CampusCollar. We never sell your information. Job photos
+          are encrypted and stored on IPFS.
+        </p>
       </section>
 
       {/* Danger zone */}
       <section className="bg-white border border-red-200 rounded-xl p-5 space-y-3">
         <h2 className="font-semibold text-red-600">Danger Zone</h2>
-        <Button variant="secondary" className="w-full" onClick={logout}>Sign Out</Button>
+        <Button variant="secondary" className="w-full" onClick={logout}>
+          Sign Out
+        </Button>
         {!showDeleteConfirm ? (
-          <Button variant="danger" className="w-full" onClick={() => setShowDeleteConfirm(true)}>Delete Account</Button>
+          <Button variant="danger" className="w-full" onClick={() => setShowDeleteConfirm(true)}>
+            Delete Account
+          </Button>
         ) : (
           <div className="space-y-2">
             <p className="text-sm text-red-600 font-medium">Are you sure? This cannot be undone.</p>
             <div className="flex gap-3">
-              <Button variant="danger" className="flex-1" onClick={() => alert('Account deletion coming soon')}>Yes, delete</Button>
-              <Button variant="secondary" onClick={() => setShowDeleteConfirm(false)}>Cancel</Button>
+              <Button
+                variant="danger"
+                className="flex-1"
+                onClick={() => alert('Account deletion coming soon')}
+              >
+                Yes, delete
+              </Button>
+              <Button variant="secondary" onClick={() => setShowDeleteConfirm(false)}>
+                Cancel
+              </Button>
             </div>
           </div>
         )}

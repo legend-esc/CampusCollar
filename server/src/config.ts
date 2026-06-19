@@ -4,7 +4,9 @@ export const config = {
   clientUrl: process.env.CLIENT_URL || 'http://localhost:5173',
 
   database: {
-    url: process.env.DATABASE_URL || 'postgresql://campuscollar:campuscollar_dev@localhost:5432/campuscollar',
+    url:
+      process.env.DATABASE_URL ||
+      'postgresql://campuscollar:campuscollar_dev@localhost:5432/campuscollar',
   },
 
   redis: {
@@ -13,7 +15,8 @@ export const config = {
 
   stellar: {
     rpcUrl: process.env.STELLAR_RPC_URL || 'http://localhost:8000/soroban/rpc',
-    networkPassphrase: process.env.STELLAR_NETWORK_PASSPHRASE || 'Test SDF Network ; September 2015',
+    networkPassphrase:
+      process.env.STELLAR_NETWORK_PASSPHRASE || 'Test SDF Network ; September 2015',
   },
 
   jwt: {
@@ -26,4 +29,4 @@ export const config = {
     dir: process.env.UPLOAD_DIR || './uploads',
     maxFileSize: parseInt(process.env.MAX_FILE_SIZE || '5242880', 10),
   },
-}
+};

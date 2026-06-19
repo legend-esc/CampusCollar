@@ -37,19 +37,27 @@ export default function JobForm({ onSuccess, onCancel }: JobFormProps) {
     onError: (err: Error) => setError(err.message),
   });
 
-  const set = (field: string, value: unknown) =>
-    setForm((f) => ({ ...f, [field]: value }));
+  const set = (field: string, value: unknown) => setForm((f) => ({ ...f, [field]: value }));
 
   const submit = (e: FormEvent) => {
     e.preventDefault();
-    if (form.amount > 150) { setError('Job amount cannot exceed $150'); return; }
+    if (form.amount > 150) {
+      setError('Job amount cannot exceed $150');
+      return;
+    }
     setError(null);
     mutation.mutate();
   };
 
   return (
     <form onSubmit={submit} className="space-y-4">
-      <Input label="Job Title" value={form.title} onChange={(e) => set('title', e.target.value)} required placeholder="e.g. Mount my TV on the wall" />
+      <Input
+        label="Job Title"
+        value={form.title}
+        onChange={(e) => set('title', e.target.value)}
+        required
+        placeholder="e.g. Mount my TV on the wall"
+      />
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
         <textarea
@@ -68,7 +76,11 @@ export default function JobForm({ onSuccess, onCancel }: JobFormProps) {
           value={form.category}
           onChange={(e) => set('category', e.target.value)}
         >
-          {JOB_CATEGORIES.map((c) => <option key={c.value} value={c.value}>{c.label}</option>)}
+          {JOB_CATEGORIES.map((c) => (
+            <option key={c.value} value={c.value}>
+              {c.label}
+            </option>
+          ))}
         </select>
       </div>
       <div>
@@ -76,18 +88,35 @@ export default function JobForm({ onSuccess, onCancel }: JobFormProps) {
           Budget: <span className="font-bold text-campus-primary">${form.amount}</span>
         </label>
         <input
-          type="range" min={5} max={150} step={5}
+          type="range"
+          min={5}
+          max={150}
+          step={5}
           value={form.amount}
           onChange={(e) => set('amount', Number(e.target.value))}
           className="w-full accent-campus-primary"
         />
-        <div className="flex justify-between text-xs text-gray-400 mt-1"><span>$5</span><span>$150 max</span></div>
+        <div className="flex justify-between text-xs text-gray-400 mt-1">
+          <span>$5</span>
+          <span>$150 max</span>
+        </div>
       </div>
-      <Input label="Location" value={form.location} onChange={(e) => set('location', e.target.value)} placeholder="e.g. Dorm A, Room 204" />
+      <Input
+        label="Location"
+        value={form.location}
+        onChange={(e) => set('location', e.target.value)}
+        placeholder="e.g. Dorm A, Room 204"
+      />
       {error && <p className="text-sm text-red-600">{error}</p>}
       <div className="flex gap-3 pt-2">
-        <Button type="submit" loading={mutation.isPending} className="flex-1">Post Job</Button>
-        {onCancel && <Button type="button" variant="secondary" onClick={onCancel}>Cancel</Button>}
+        <Button type="submit" loading={mutation.isPending} className="flex-1">
+          Post Job
+        </Button>
+        {onCancel && (
+          <Button type="button" variant="secondary" onClick={onCancel}>
+            Cancel
+          </Button>
+        )}
       </div>
     </form>
   );

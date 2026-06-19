@@ -65,19 +65,16 @@ export function useStellar() {
     setState({ pubkey: null, balance: null, connected: false, connecting: false, error: null });
   }, []);
 
-  const signTransaction = useCallback(
-    async (xdr: string): Promise<string> => {
-      if (window.freighter) {
-        return window.freighter.signTransaction(xdr, { network: 'TESTNET' });
-      }
-      if (window.albedo) {
-        const res = await window.albedo.tx({ xdr, network: 'testnet' });
-        return res.signed_envelope_xdr;
-      }
-      throw new Error('No wallet connected');
-    },
-    []
-  );
+  const signTransaction = useCallback(async (xdr: string): Promise<string> => {
+    if (window.freighter) {
+      return window.freighter.signTransaction(xdr, { network: 'TESTNET' });
+    }
+    if (window.albedo) {
+      const res = await window.albedo.tx({ xdr, network: 'testnet' });
+      return res.signed_envelope_xdr;
+    }
+    throw new Error('No wallet connected');
+  }, []);
 
   return { ...state, connect, disconnect, signTransaction };
 }

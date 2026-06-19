@@ -204,14 +204,14 @@ University students face a unique set of challenges when something breaks:
 
 CampusCollar is a **hyperlocal, student-only gig platform** that keeps jobs small, payments secure, and trust anchored in the university itself.
 
-| Pain Point | CampusCollar Solution |
-|---|---|
-| No local connections | Student-only marketplace restricted to `.edu` emails |
-| Slow campus maintenance | Same-day or next-day help from peers |
-| Emergency pricing | Jobs capped at **$150 max** |
-| Payment risk | **USDC on Stellar** — held in escrow, released by NFC tap |
-| Trust & quality | **Skill badges** verified by campus facilities staff |
-| Student poverty | Workers earn **$40–$60/hr** in spare time between classes |
+| Pain Point              | CampusCollar Solution                                     |
+| ----------------------- | --------------------------------------------------------- |
+| No local connections    | Student-only marketplace restricted to `.edu` emails      |
+| Slow campus maintenance | Same-day or next-day help from peers                      |
+| Emergency pricing       | Jobs capped at **$150 max**                               |
+| Payment risk            | **USDC on Stellar** — held in escrow, released by NFC tap |
+| Trust & quality         | **Skill badges** verified by campus facilities staff      |
+| Student poverty         | Workers earn **$40–$60/hr** in spare time between classes |
 
 ---
 
@@ -240,11 +240,13 @@ CampusCollar is a **hyperlocal, student-only gig platform** that keeps jobs smal
 ## Key Features
 
 ### 🔐 Trusted Identity
+
 - **`.edu` email restriction** — only current students, faculty, and staff can join.
 - **Campus ID verification** — optional but rewarded with higher trust scores.
 - **No anonymous accounts** — every user is tied to a verified university affiliation.
 
 ### 💸 Stellar-Powered Payments
+
 - **USDC escrow** — funds are locked in a smart contract at job acceptance. Neither party can run.
 - **NFC tap-to-release** — the customer taps their NFC-enabled phone to a dynamic QR code. Payment is released atomically.
 - **Instant settlement** — Stellar settles in 3–5 seconds. No bank delays, no chargebacks.
@@ -252,22 +254,25 @@ CampusCollar is a **hyperlocal, student-only gig platform** that keeps jobs smal
 - **Fiat on-ramp** — users can deposit fiat via card or bank; it's auto-converted to USDC.
 
 ### 🏅 Verified Skill Badges
+
 Badges are **earned, not bought**. Campus facilities staff (or approved tradespeople) verify real-world competence.
 
-| Badge | Requirement | Benefit |
-|---|---|---|
-| 🛠️ **Handyperson** | Complete 5 jobs with 4.5★+ | Job cap raised to $200 |
-| 🔧 **Technician** | Pass a practical test with campus IT/facilities | Access to electronics/TV mounting jobs |
-| 💧 **Plumbing Apprentice** | Verified by campus plumber on 3 sink/tap fixes | Access to plumbing jobs |
-| 🪚 **Furniture Pro** | 10 furniture assembly jobs completed | Priority job listing |
-| ⭐ **Campus All-Star** | 50+ jobs, 4.8★+, 3 badges | $300 job cap, featured profile |
+| Badge                      | Requirement                                     | Benefit                                |
+| -------------------------- | ----------------------------------------------- | -------------------------------------- |
+| 🛠️ **Handyperson**         | Complete 5 jobs with 4.5★+                      | Job cap raised to $200                 |
+| 🔧 **Technician**          | Pass a practical test with campus IT/facilities | Access to electronics/TV mounting jobs |
+| 💧 **Plumbing Apprentice** | Verified by campus plumber on 3 sink/tap fixes  | Access to plumbing jobs                |
+| 🪚 **Furniture Pro**       | 10 furniture assembly jobs completed            | Priority job listing                   |
+| ⭐ **Campus All-Star**     | 50+ jobs, 4.8★+, 3 badges                       | $300 job cap, featured profile         |
 
 ### 📍 Hyperlocal & Campus-Focused
+
 - **Geofenced to campus** — jobs are within walking or biking distance.
 - **On-campus only** — no off-campus strangers. Everyone belongs to the same university community.
 - **Dorm-friendly** — jobs are small enough to be done in a dorm room or apartment.
 
 ### 📱 Mobile-First Experience
+
 - **Progressive Web App (PWA)** — no app store needed. Works on any phone.
 - **NFC integration** — native NFC tap for payment release on iOS and Android.
 - **Push notifications** — job offers, messages, payment confirmations.
@@ -279,33 +284,36 @@ Badges are **earned, not bought**. Campus facilities staff (or approved tradespe
 
 CampusCollar is built on **Stellar** because it's the only blockchain that checks every box for this use case:
 
-| Requirement | Stellar | Why |
-|---|---|---|
-| **Stablecoin payments** | ✅ USDC native on Stellar | No volatility. Students deal in real dollars. |
-| **Fast settlement** | ✅ 3–5 seconds | Instant payment release on NFC tap. |
-| **Low fees** | ✅ ~$0.00001 per tx | Micro-transactions are viable. |
-| **Smart contracts** | ✅ Soroban | Escrow logic, badge verification, cap management. |
-| **NFC-friendly** | ✅ Small tx payloads | Payment amounts fit in a QR/NFC data blob. |
-| **Energy efficient** | ✅ Proof-of-agreement | Campus sustainability groups approve. |
-| **Fiat on/off ramp** | ✅ Built-in anchors | Students deposit with card, withdraw to bank. |
+| Requirement             | Stellar                   | Why                                               |
+| ----------------------- | ------------------------- | ------------------------------------------------- |
+| **Stablecoin payments** | ✅ USDC native on Stellar | No volatility. Students deal in real dollars.     |
+| **Fast settlement**     | ✅ 3–5 seconds            | Instant payment release on NFC tap.               |
+| **Low fees**            | ✅ ~$0.00001 per tx       | Micro-transactions are viable.                    |
+| **Smart contracts**     | ✅ Soroban                | Escrow logic, badge verification, cap management. |
+| **NFC-friendly**        | ✅ Small tx payloads      | Payment amounts fit in a QR/NFC data blob.        |
+| **Energy efficient**    | ✅ Proof-of-agreement     | Campus sustainability groups approve.             |
+| **Fiat on/off ramp**    | ✅ Built-in anchors       | Students deposit with card, withdraw to bank.     |
 
 ---
 
 ## Target Users
 
 ### 🧑‍🎓 Students (Customers)
+
 - Freshmen living on campus for the first time
 - International students with no local family or contacts
 - Grad students too busy to deal with maintenance
 - Anyone whose dorm AC filter needs replacing
 
 ### 💼 Students (Workers)
+
 - Work-study students looking for flexible hours
 - International students who can't work off-campus due to visa restrictions (on-campus work is allowed)
 - Trade-savvy students who enjoy fixing things
 - Anyone wanting to earn $40–$60/hr between classes
 
 ### 👨‍🏫 Campus Staff
+
 - Facilities managers who can recommend vetted students
 - IT staff who need ad-hoc help with classroom tech
 - Resident advisors (RAs) who field constant fix requests
@@ -315,24 +323,31 @@ CampusCollar is built on **Stellar** because it's the only blockchain that check
 ## Use Cases
 
 ### 🛋️ Furniture Assembly
+
 > "I ordered a desk from IKEA but the instructions might as well be in Klingon. I'll pay someone $40 to build it."
 
 ### 🔧 Dorm Repairs
+
 > "The bathroom sink drains slower than molasses. Campus maintenance says '2–3 weeks.' I'll pay $35 to have it snaked tomorrow."
 
 ### 📺 TV / Monitor Mounting
+
 > "I need my 32" monitor mounted on the wall. I have the arm but not the tools or the courage to drill into drywall. $60."
 
 ### 📱 Phone / Laptop Screen Repair
+
 > "I dropped my phone and the screen is spider-webbed. Can anyone replace it for under $100?"
 
 ### 🚲 Bike Tune-Up
+
 > "My bike chain keeps slipping and the tires are flat. $25 for a basic tune-up."
 
 ### 🧹 Deep Cleaning
+
 > "My room has achieved 'biohazard' status after finals week. $50 for a deep clean."
 
 ### 🔌 IT / Smart Home Setup
+
 > "Can someone help me set up my Wi-Fi mesh network? I'll pay $30."
 
 ---
@@ -342,11 +357,13 @@ CampusCollar is built on **Stellar** because it's the only blockchain that check
 CampusCollar is **free for students who need help**. Revenue comes from:
 
 ### 1. Worker Fee — 5%
+
 - 5% is deducted from the worker's earnings on each completed job.
 - A $50 job → worker receives $47.50.
 - Justified by: payment processing, escrow security, dispute resolution, badge verification infrastructure.
 
 ### 2. University Partnership Fee
+
 - Annual flat fee for the university to offer CampusCollar as a **white-label or co-branded service**.
 - Includes: dedicated campus facilities badge verification, priority support, custom geofencing, analytics dashboard for student employment office.
 - Tiered pricing:
@@ -355,12 +372,15 @@ CampusCollar is **free for students who need help**. Revenue comes from:
   - **Large school (20k+):** $30,000/yr
 
 ### 3. Premium Badge Verification (Future)
+
 - Expedited skill badge testing for a one-time $10 fee (optional — free verification slots remain available).
 
 ### 4. Featured Listings (Future)
+
 - Workers can pay $1 to boost their profile for 24 hours.
 
 ### What's Always Free
+
 - Posting a job
 - Browsing and searching
 - Messaging and communication
@@ -371,20 +391,20 @@ CampusCollar is **free for students who need help**. Revenue comes from:
 
 ## Comparison: CampusCollar vs. BlueCollar
 
-| Dimension | CampusCollar | BlueCollar |
-|---|---|---|
-| **Scope** | Hyperlocal — single campus or university | City-wide or regional |
-| **Users** | Students, faculty, campus staff | General public |
-| **Max job value** | **$150** (small, quick fixes) | $500+ (larger projects) |
-| **Verification** | `.edu` email + campus ID | Community reviews, background checks |
-| **Trust anchor** | **The university itself** (institutional) | Community curation (organic) |
-| **Payment** | **USDC escrow on Stellar**, NFC release | Traditional credit card / cash |
-| **Settlement** | **Instant** (3–5 seconds) | 2–5 business days |
-| **Worker incentives** | Skill badges → higher caps → more earnings | Ratings → more visibility |
-| **Fees** | **Free for customers**, 5% from workers | 15–20% from workers or service fees |
-| **Target problem** | Student poverty + slow campus maintenance | General home repair access |
-| **Geofencing** | Campus boundaries + adjacent student housing | City neighborhoods |
-| **Identity** | Real-name, university-tied | Pseudonymous possible |
+| Dimension             | CampusCollar                                 | BlueCollar                           |
+| --------------------- | -------------------------------------------- | ------------------------------------ |
+| **Scope**             | Hyperlocal — single campus or university     | City-wide or regional                |
+| **Users**             | Students, faculty, campus staff              | General public                       |
+| **Max job value**     | **$150** (small, quick fixes)                | $500+ (larger projects)              |
+| **Verification**      | `.edu` email + campus ID                     | Community reviews, background checks |
+| **Trust anchor**      | **The university itself** (institutional)    | Community curation (organic)         |
+| **Payment**           | **USDC escrow on Stellar**, NFC release      | Traditional credit card / cash       |
+| **Settlement**        | **Instant** (3–5 seconds)                    | 2–5 business days                    |
+| **Worker incentives** | Skill badges → higher caps → more earnings   | Ratings → more visibility            |
+| **Fees**              | **Free for customers**, 5% from workers      | 15–20% from workers or service fees  |
+| **Target problem**    | Student poverty + slow campus maintenance    | General home repair access           |
+| **Geofencing**        | Campus boundaries + adjacent student housing | City neighborhoods                   |
+| **Identity**          | Real-name, university-tied                   | Pseudonymous possible                |
 
 ---
 
@@ -411,17 +431,17 @@ CampusCollar is **free for students who need help**. Revenue comes from:
 
 ### Stack Components
 
-| Layer | Technology | Purpose |
-|---|---|---|
-| **Frontend** | React + TypeScript (PWA) | Cross-platform mobile + web |
-| **State** | TanStack Query + Zustand | Server state + client state |
-| **API** | GraphQL (Apollo) + WebSockets | Real-time job updates, messaging |
-| **Backend** | Node.js + Fastify | REST + GraphQL endpoints |
-| **Database** | PostgreSQL + Redis | Relational data + caching |
-| **Blockchain** | Stellar (Soroban smart contracts) | USDC escrow, badge registry |
-| **Storage** | IPFS / Arweave | Decentralized job evidence |
-| **Auth** | OAuth 2.0 + Stellar Keypair | Email verification + wallet |
-| **NFC** | Web NFC API + QR fallback | Payment release trigger |
+| Layer          | Technology                        | Purpose                          |
+| -------------- | --------------------------------- | -------------------------------- |
+| **Frontend**   | React + TypeScript (PWA)          | Cross-platform mobile + web      |
+| **State**      | TanStack Query + Zustand          | Server state + client state      |
+| **API**        | GraphQL (Apollo) + WebSockets     | Real-time job updates, messaging |
+| **Backend**    | Node.js + Fastify                 | REST + GraphQL endpoints         |
+| **Database**   | PostgreSQL + Redis                | Relational data + caching        |
+| **Blockchain** | Stellar (Soroban smart contracts) | USDC escrow, badge registry      |
+| **Storage**    | IPFS / Arweave                    | Decentralized job evidence       |
+| **Auth**       | OAuth 2.0 + Stellar Keypair       | Email verification + wallet      |
+| **NFC**        | Web NFC API + QR fallback         | Payment release trigger          |
 
 ---
 
@@ -430,46 +450,49 @@ CampusCollar is **free for students who need help**. Revenue comes from:
 CampusCollar uses **Soroban smart contracts** on Stellar for three core functions:
 
 ### 1. Escrow Contract
+
 ```rust
 // Simplified interface — not production code
 pub trait Escrow {
     // Customer creates a job and deposits USDC
     fn create_job(customer: Address, amount: i128, worker: Option<Address>);
-    
+
     // Worker accepts the job
     fn accept_job(job_id: Bytes, worker: Address);
-    
+
     // Customer confirms completion via NFC trigger
     fn release_payment(job_id: Bytes, nfc_challenge: Bytes);
-    
+
     // Dispute — funds stay locked until resolution
     fn dispute(job_id: Bytes, party: Address);
-    
+
     // Admin resolution after dispute
     fn resolve_dispute(job_id: Bytes, winner: Address);
 }
 ```
 
 ### 2. Badge Registry Contract
+
 ```rust
 pub trait BadgeRegistry {
     // Issue a badge after campus staff verification
     fn issue_badge(worker: Address, badge: BadgeType, verifier: Address);
-    
+
     // Revoke badge (repeated complaints)
     fn revoke_badge(worker: Address, badge: BadgeType);
-    
+
     // Check worker's job cap based on badges held
     fn get_job_cap(worker: Address) -> i128;
 }
 ```
 
 ### 3. Job Cap Contract
+
 ```rust
 pub trait JobCap {
     // Maximum allowed job amount for a worker
     fn max_job_amount(worker: Address) -> i128;
-    
+
     // Automatically scales with badge tiers
     // Base: $100 | Handyperson: $200 | Campus All-Star: $300
 }
@@ -515,17 +538,20 @@ The NFC payment flow is the heart of CampusCollar's trust model:
 ## Identity & Verification
 
 ### Tier 1 — Basic (Required)
+
 - `.edu` email verification
 - University name displayed on profile
 - Can post and accept jobs up to **$100**
 
 ### Tier 2 — Verified (Optional, Recommended)
+
 - Campus ID card photo (manually reviewed or AI-assisted)
 - Real name verified against university directory
 - Higher trust score → jobs are more visible to customers
 - Job cap raised to **$150**
 
 ### Tier 3 — Badged (Earned)
+
 - Skill-specific badges verified by campus facilities staff
 - Unlock higher job caps and priority listing
 
@@ -535,14 +561,15 @@ The NFC payment flow is the heart of CampusCollar's trust model:
 
 ### Badge Levels
 
-| Level | Badges Required | Job Cap | Perks |
-|---|---|---|---|
-| **Bronze** | 0 | $100 | Basic access |
-| **Silver** | 1 | $200 | Priority job alerts |
-| **Gold** | 3 | $250 | Featured profile |
-| **Platinum** | 5+ | $300 | "Campus All-Star" badge, reduced fee (3%) |
+| Level        | Badges Required | Job Cap | Perks                                     |
+| ------------ | --------------- | ------- | ----------------------------------------- |
+| **Bronze**   | 0               | $100    | Basic access                              |
+| **Silver**   | 1               | $200    | Priority job alerts                       |
+| **Gold**     | 3               | $250    | Featured profile                          |
+| **Platinum** | 5+              | $300    | "Campus All-Star" badge, reduced fee (3%) |
 
 ### Verification Process
+
 1. Worker requests a badge test in-app.
 2. Campus facilities staff receives a notification.
 3. A 15-minute practical test is scheduled (e.g., "unclog this sink," "mount this TV").
@@ -550,6 +577,7 @@ The NFC payment flow is the heart of CampusCollar's trust model:
 5. The worker's job cap is automatically updated.
 
 ### Reputation Scoring
+
 - **Rating**: 1–5 stars per job (must be from the other party)
 - **Completion rate**: % of accepted jobs completed
 - **Response time**: median time to accept a job offer
@@ -590,23 +618,27 @@ POSTED ──► FUNDED ──► ACCEPTED ──► IN_PROGRESS ──► COMPL
 ## Security & Trust
 
 ### Payment Security
+
 - **Escrow-first**: Funds are always locked in a Soroban smart contract before work begins.
 - **No chargebacks**: USDC on Stellar is final. No credit card reversals.
 - **Dispute fund**: 1% of each job fee goes to a pool that covers exceptional cases.
 
 ### Identity Security
+
 - `.edu` email **+** optional campus ID verification
 - Rate limiting on login attempts
 - Suspicious account activity triggers manual review
 - University partnership allows directory-based verification
 
 ### Data Privacy
+
 - Minimal data collection: name, email, university, job history
 - No sharing of personal data with third parties
 - Job photos stored on IPFS (encrypted, permissioned access)
 - GDPR and FERPA compliant
 
 ### Anti-Fraud Measures
+
 - **New worker cap**: First 3 jobs capped at $50
 - **Geolocation verification**: Worker must be on/near campus to accept jobs
 - **Photo evidence**: "After" photo required for payment release
@@ -618,6 +650,7 @@ POSTED ──► FUNDED ──► ACCEPTED ──► IN_PROGRESS ──► COMPL
 ## Roadmap
 
 ### Phase 1 — MVP
+
 - [x] Concept validation
 - [ ] `.edu` email authentication
 - [ ] Job posting + browsing (React PWA)
@@ -627,6 +660,7 @@ POSTED ──► FUNDED ──► ACCEPTED ──► IN_PROGRESS ──► COMPL
 - [ ] Chat system (WebSockets)
 
 ### Phase 2 — Launch
+
 - [ ] Stellar mainnet deployment
 - [ ] Campus ID verification flow
 - [ ] Fiat on-ramp (card → USDC)
@@ -636,6 +670,7 @@ POSTED ──► FUNDED ──► ACCEPTED ──► IN_PROGRESS ──► COMPL
 - [ ] First university partnership pilot
 
 ### Phase 3 — Growth
+
 - [ ] Automated badge verification with campus facilities
 - [ ] Worker analytics dashboard
 - [ ] Referral program ($10 bonus per referral)
@@ -644,6 +679,7 @@ POSTED ──► FUNDED ──► ACCEPTED ──► IN_PROGRESS ──► COMPL
 - [ ] Job scheduling / recurring jobs
 
 ### Phase 4 — Scale
+
 - [ ] White-label platform for universities
 - [ ] USDC withdrawal to bank accounts
 - [ ] Advanced badge tiers (electrician, HVAC, etc.)
@@ -693,11 +729,11 @@ CampusCollar is released under the **MIT License**. See [LICENSE](LICENSE) for d
 
 ## 📬 Contact
 
-- **Website**: [campuscollar.io](https://campuscollar.io) 
-- **Email**: hello@campuscollar.io 
+- **Website**: [campuscollar.io](https://campuscollar.io)
+- **Email**: hello@campuscollar.io
 - **Twitter / X**: [@CampusCollar](https://x.com/CampusCollar)
 - **Discord**: [Join our server](https://discord.gg/campuscollar)
 
 ---
 
-*Built with ❤️ for students, by students. On Stellar.*
+_Built with ❤️ for students, by students. On Stellar._

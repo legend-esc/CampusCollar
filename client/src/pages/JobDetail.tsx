@@ -13,8 +13,19 @@ export default function JobDetail() {
   const { data: job, isLoading, error, accept, complete, cancel, dispute } = useJob(id);
   const user = useAuthStore((s) => s.user);
 
-  if (isLoading) return <div className="max-w-2xl mx-auto px-4 py-12 animate-pulse space-y-4"><div className="h-8 bg-gray-100 rounded" /><div className="h-40 bg-gray-100 rounded" /></div>;
-  if (error || !job) return <div className="max-w-2xl mx-auto px-4 py-12 text-center text-red-500">{error?.message ?? 'Job not found'}</div>;
+  if (isLoading)
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-12 animate-pulse space-y-4">
+        <div className="h-8 bg-gray-100 rounded" />
+        <div className="h-40 bg-gray-100 rounded" />
+      </div>
+    );
+  if (error || !job)
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-12 text-center text-red-500">
+        {error?.message ?? 'Job not found'}
+      </div>
+    );
 
   const isCustomer = user?.id === job.customerId;
   const isWorker = user?.id === job.workerId;
@@ -35,7 +46,9 @@ export default function JobDetail() {
           <h1 className="text-2xl font-bold text-gray-900">{job.title}</h1>
           <p className="text-sm text-gray-500 mt-1">{job.location}</p>
         </div>
-        <span className={`shrink-0 text-sm font-medium px-3 py-1 rounded-full ${JOB_STATUS_COLORS[job.status]}`}>
+        <span
+          className={`shrink-0 text-sm font-medium px-3 py-1 rounded-full ${JOB_STATUS_COLORS[job.status]}`}
+        >
           {JOB_STATUS_LABELS[job.status]}
         </span>
       </div>
@@ -61,7 +74,12 @@ export default function JobDetail() {
       {/* Actions */}
       <div className="space-y-3">
         {canAccept && (
-          <Button onClick={() => accept.mutate()} loading={accept.isPending} className="w-full" size="lg">
+          <Button
+            onClick={() => accept.mutate()}
+            loading={accept.isPending}
+            className="w-full"
+            size="lg"
+          >
             Accept Job
           </Button>
         )}
@@ -69,12 +87,22 @@ export default function JobDetail() {
           <NFCTapButton jobId={job.id} onSuccess={handleRelease} disabled={complete.isPending} />
         )}
         {canCancel && (
-          <Button variant="danger" onClick={() => cancel.mutate()} loading={cancel.isPending} className="w-full">
+          <Button
+            variant="danger"
+            onClick={() => cancel.mutate()}
+            loading={cancel.isPending}
+            className="w-full"
+          >
             Cancel Job
           </Button>
         )}
         {canDispute && (
-          <Button variant="secondary" onClick={() => dispute.mutate()} loading={dispute.isPending} className="w-full">
+          <Button
+            variant="secondary"
+            onClick={() => dispute.mutate()}
+            loading={dispute.isPending}
+            className="w-full"
+          >
             Raise Dispute
           </Button>
         )}
@@ -91,7 +119,13 @@ export default function JobDetail() {
   );
 }
 
-function PartyCard({ label, user }: { label: string; user: { name: string; university?: string; rating?: number; trustScore?: number } }) {
+function PartyCard({
+  label,
+  user,
+}: {
+  label: string;
+  user: { name: string; university?: string; rating?: number; trustScore?: number };
+}) {
   return (
     <div className="bg-gray-50 rounded-xl p-4">
       <p className="text-xs text-gray-400 mb-1">{label}</p>

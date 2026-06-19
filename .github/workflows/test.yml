@@ -10,19 +10,16 @@ jobs:
   client:
     name: Client
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: client
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: client/package-lock.json
+          cache-dependency-path: package-lock.json
       - run: npm ci
-      - run: npm run lint
-      - run: npm run typecheck
+      - run: npm run lint -w client
+      - run: npm run typecheck -w client
 
   server:
     name: Server
@@ -55,21 +52,18 @@ jobs:
       REDIS_URL: redis://localhost:6379
       JWT_SECRET: test-secret-for-ci
       PORT: 3001
-    defaults:
-      run:
-        working-directory: server
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-          cache-dependency-path: server/package-lock.json
+          cache-dependency-path: package-lock.json
       - run: npm ci
-      - run: npx prisma generate
-      - run: npx prisma db push
-      - run: npm run typecheck
-      - run: npm test
+      - run: npx prisma generate --schema=server/prisma/schema.prisma
+      - run: npx prisma db push --schema=server/prisma/schema.prisma
+      - run: npm run typecheck -w server
+      - run: npm test -w server
 
   contracts:
     name: Contracts

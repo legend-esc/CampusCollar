@@ -2,7 +2,12 @@ import { User } from '../../types';
 import RatingStars from './RatingStars';
 
 export default function ProfileCard({ user }: { user: User }) {
-  const initials = user.name.split(' ').map((n) => n[0]).join('').toUpperCase().slice(0, 2);
+  const initials = user.name
+    .split(' ')
+    .map((n) => n[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
   return (
     <div className="bg-white rounded-xl border border-gray-200 p-6 flex flex-col items-center text-center gap-3">
       <div className="w-16 h-16 rounded-full bg-campus-primary flex items-center justify-center text-white text-xl font-bold">

@@ -19,6 +19,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Environment**
+
 - OS: [e.g. macOS 14, Ubuntu 22.04]
 - Browser: [e.g. Chrome 120, Safari 17]
 - Version: [e.g. 0.1.0]

@@ -1,42 +1,42 @@
-import { useState, FormEvent } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import Button from '../components/common/Button'
-import Input from '../components/common/Input'
-import Modal from '../components/common/Modal'
-import { useAuthStore } from '../store/authStore'
+import { useState, FormEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Button from '../components/common/Button';
+import Input from '../components/common/Input';
+import Modal from '../components/common/Modal';
+import { useAuthStore } from '../store/authStore';
 
 export default function Signup() {
-  const [form, setForm] = useState({ email: '', password: '', name: '', university: '' })
-  const [otp, setOtp] = useState('')
-  const [step, setStep] = useState<'signup' | 'verify'>('signup')
-  const [userId, setUserId] = useState<string | null>(null)
-  const { signup, verifyEmail, isLoading, error, clearError } = useAuthStore()
-  const navigate = useNavigate()
+  const [form, setForm] = useState({ email: '', password: '', name: '', university: '' });
+  const [otp, setOtp] = useState('');
+  const [step, setStep] = useState<'signup' | 'verify'>('signup');
+  const [userId, setUserId] = useState<string | null>(null);
+  const { signup, verifyEmail, isLoading, error, clearError } = useAuthStore();
+  const navigate = useNavigate();
 
   const handleSignup = async (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      const result = await signup(form)
-      setUserId(result.userId)
-      setStep('verify')
+      const result = await signup(form);
+      setUserId(result.userId);
+      setStep('verify');
     } catch {
       // error handled by store
     }
-  }
+  };
 
   const handleVerify = async (e: FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
-      await verifyEmail(form.email, otp)
-      navigate('/login')
+      await verifyEmail(form.email, otp);
+      navigate('/login');
     } catch {
       // error handled by store
     }
-  }
+  };
 
   const updateField = (field: string, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }))
-  }
+    setForm((prev) => ({ ...prev, [field]: value }));
+  };
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
@@ -44,9 +44,7 @@ export default function Signup() {
         {step === 'signup' ? (
           <>
             <h1 className="text-2xl font-bold text-center text-gray-900">Create an account</h1>
-            <p className="mt-2 text-center text-sm text-gray-500">
-              Join with your .edu email
-            </p>
+            <p className="mt-2 text-center text-sm text-gray-500">Join with your .edu email</p>
 
             <form onSubmit={handleSignup} className="mt-8 space-y-4">
               {error && (
@@ -139,5 +137,5 @@ export default function Signup() {
         )}
       </div>
     </div>
-  )
+  );
 }

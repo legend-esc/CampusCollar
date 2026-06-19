@@ -33,7 +33,12 @@ describe('Auth flow', () => {
     const res = await app.inject({
       method: 'POST',
       url: '/api/auth/signup',
-      payload: { email: TEST_EMAIL, password: TEST_PASSWORD, name: 'Test User', university: 'Test U' },
+      payload: {
+        email: TEST_EMAIL,
+        password: TEST_PASSWORD,
+        name: 'Test User',
+        university: 'Test U',
+      },
     });
     expect(res.statusCode).toBe(201);
     expect(res.json()).toHaveProperty('userId');
@@ -43,7 +48,12 @@ describe('Auth flow', () => {
     const res = await app.inject({
       method: 'POST',
       url: '/api/auth/signup',
-      payload: { email: TEST_EMAIL, password: TEST_PASSWORD, name: 'Test User', university: 'Test U' },
+      payload: {
+        email: TEST_EMAIL,
+        password: TEST_PASSWORD,
+        name: 'Test User',
+        university: 'Test U',
+      },
     });
     expect(res.statusCode).toBe(409);
   });

@@ -20,29 +20,35 @@ export function useNFC() {
     return new Promise((resolve, reject) => {
       const reader = new (window as any).NDEFReader();
       readerRef.current = reader;
-      reader.scan().then(() => {
-        reader.onreading = ({ message }: any) => {
-          const record = message.records[0];
-          const text = new TextDecoder().decode(record.data);
-          setState((s) => ({ ...s, reading: false }));
-          resolve(text);
-        };
-        reader.onreadingerror = () => {
-          setState((s) => ({ ...s, reading: false, error: 'NFC read error' }));
-          reject(new Error('NFC read error'));
-        };
-      }).catch((err: Error) => {
-        setState((s) => ({ ...s, reading: false, error: err.message }));
-        reject(err);
-      });
+      reader
+        .scan()
+        .then(() => {
+          reader.onreading = ({ message }: any) => {
+            const record = message.records[0];
+            const text = new TextDecoder().decode(record.data);
+            setState((s) => ({ ...s, reading: false }));
+            resolve(text);
+          };
+          reader.onreadingerror = () => {
+            setState((s) => ({ ...s, reading: false, error: 'NFC read error' }));
+            reject(new Error('NFC read error'));
+          };
+        })
+        .catch((err: Error) => {
+          setState((s) => ({ ...s, reading: false, error: err.message }));
+          reject(err);
+        });
     });
   }, [state.supported]);
 
-  const write = useCallback(async (data: string): Promise<void> => {
-    if (!state.supported) throw new Error('NFC not supported');
-    const writer = new (window as any).NDEFWriter();
-    await writer.write({ records: [{ recordType: 'text', data }] });
-  }, [state.supported]);
+  const write = useCallback(
+    async (data: string): Promise<void> => {
+      if (!state.supported) throw new Error('NFC not supported');
+      const writer = new (window as any).NDEFWriter();
+      await writer.write({ records: [{ recordType: 'text', data }] });
+    },
+    [state.supported],
+  );
 
   const cancel = useCallback(() => {
     readerRef.current = null;

@@ -21,11 +21,11 @@ pub trait EscrowTrait {
 
 ### Storage
 
-| Key | Type | Description |
-|---|---|---|
-| `Job(Bytes)` | `JobState` | Full job state struct |
+| Key                   | Type         | Description                  |
+| --------------------- | ------------ | ---------------------------- |
+| `Job(Bytes)`          | `JobState`   | Full job state struct        |
 | `NfcChallenge(Bytes)` | `BytesN<32>` | Single-use challenge per job |
-| `EscrowBalance` | `i128` | Total USDC held in contract |
+| `EscrowBalance`       | `i128`       | Total USDC held in contract  |
 
 ### State Machine
 
@@ -79,10 +79,10 @@ pub trait JobCapTrait {
 ### Cap Tiers
 
 | Badges held | Max job amount (USDC) |
-|---|---|
-| 0 | 100 |
-| 1 | 200 |
-| 3 | 250 |
-| 5+ | 300 |
+| ----------- | --------------------- |
+| 0           | 100                   |
+| 1           | 200                   |
+| 3           | 250                   |
+| 5+          | 300                   |
 
 The cap is enforced by the Escrow contract calling `JobCap.calculate_cap()` before accepting a `fund_job` call.

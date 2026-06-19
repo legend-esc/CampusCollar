@@ -1,16 +1,16 @@
-import { Link, useNavigate } from 'react-router-dom'
-import { useAuthStore } from '../store/authStore'
-import { useUIStore } from '../store/uiStore'
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/authStore';
+import { useUIStore } from '../store/uiStore';
 
 export default function Navbar() {
-  const { isAuthenticated, user, logout } = useAuthStore()
-  const { sidebarOpen, toggleSidebar } = useUIStore()
-  const navigate = useNavigate()
+  const { isAuthenticated, user, logout } = useAuthStore();
+  const { sidebarOpen, toggleSidebar } = useUIStore();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout()
-    navigate('/')
-  }
+    logout();
+    navigate('/');
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -26,14 +26,23 @@ export default function Navbar() {
             </Link>
             {isAuthenticated ? (
               <>
-                <Link to="/badges" className="text-gray-600 hover:text-campus-primary transition-colors">
+                <Link
+                  to="/badges"
+                  className="text-gray-600 hover:text-campus-primary transition-colors"
+                >
                   Badges
                 </Link>
-                <Link to="/wallet" className="text-gray-600 hover:text-campus-primary transition-colors">
+                <Link
+                  to="/wallet"
+                  className="text-gray-600 hover:text-campus-primary transition-colors"
+                >
                   Wallet
                 </Link>
                 <div className="flex items-center gap-3 ml-4">
-                  <Link to="/profile" className="text-sm font-medium text-gray-700 hover:text-campus-primary">
+                  <Link
+                    to="/profile"
+                    className="text-sm font-medium text-gray-700 hover:text-campus-primary"
+                  >
                     {user?.name || user?.email}
                   </Link>
                   <button
@@ -69,9 +78,19 @@ export default function Navbar() {
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {sidebarOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               )}
             </svg>
           </button>
@@ -95,7 +114,13 @@ export default function Navbar() {
                 <Link to="/profile" className="block py-2 text-gray-600" onClick={toggleSidebar}>
                   Profile
                 </Link>
-                <button onClick={() => { handleLogout(); toggleSidebar() }} className="block py-2 text-gray-600">
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    toggleSidebar();
+                  }}
+                  className="block py-2 text-gray-600"
+                >
                   Logout
                 </button>
               </>
@@ -104,7 +129,11 @@ export default function Navbar() {
                 <Link to="/login" className="block py-2 text-gray-600" onClick={toggleSidebar}>
                   Log in
                 </Link>
-                <Link to="/signup" className="block py-2 text-campus-primary font-medium" onClick={toggleSidebar}>
+                <Link
+                  to="/signup"
+                  className="block py-2 text-campus-primary font-medium"
+                  onClick={toggleSidebar}
+                >
                   Sign up
                 </Link>
               </>
@@ -113,5 +142,5 @@ export default function Navbar() {
         </div>
       )}
     </nav>
-  )
+  );
 }
