@@ -36,7 +36,7 @@ npm run dev
 
 Open http://localhost:5173 — CampusCollar is running.
 
-The GraphQL playground is at http://localhost:3001/api/graphql.
+The GraphQL playground is at http://localhost:3000/api/graphql.
 
 ## Environment Variables
 
@@ -46,7 +46,7 @@ The GraphQL playground is at http://localhost:3001/api/graphql.
 | `REDIS_URL` | ✅ | Redis connection string |
 | `JWT_SECRET` | ✅ | Secret for signing JWTs |
 | `STELLAR_RPC_URL` | ✅ | Stellar RPC endpoint |
-| `STELLAR_NETWORK` | ✅ | `testnet` or `mainnet` |
+| `STELLAR_NETWORK_PASSPHRASE` | ✅ | Network passphrase (e.g. `Test SDF Network ; September 2015`) |
 | `ESCROW_CONTRACT_ID` | ✅ | Deployed escrow contract address |
 | `BADGE_REGISTRY_CONTRACT_ID` | ✅ | Deployed badge registry address |
 | `JOB_CAP_CONTRACT_ID` | ✅ | Deployed job cap contract address |

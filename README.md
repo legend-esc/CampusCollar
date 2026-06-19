@@ -40,7 +40,7 @@ campuscollar/
 │   └── ISSUE_TEMPLATE/       # Issue and PR templates
 │
 ├── client/                   # Frontend — React PWA
-│   ├── public/               # Static assets, manifest, service worker
+│   ├── index.html            # HTML entry point
 │   ├── src/
 │   │   ├── components/       # Reusable UI components
 │   │   │   ├── common/       # Button, Input, Modal, Badge, etc.
@@ -61,19 +61,16 @@ campuscollar/
 │   │   │   ├── useStellar.ts
 │   │   │   ├── useJobs.ts
 │   │   │   └── useGeolocation.ts
-│   │   ├── services/         # API clients and Stellar SDK wrappers
-│   │   │   ├── api.ts        # GraphQL client
-│   │   │   ├── stellar.ts    # Stellar SDK helpers
-│   │   │   └── nfc.ts        # Web NFC API abstraction
+│   │   ├── services/         # API client
+│   │   │   └── api.ts        # GraphQL client
 │   │   ├── store/            # Zustand state stores
 │   │   │   ├── authStore.ts
 │   │   │   ├── jobStore.ts
 │   │   │   └── uiStore.ts
-│   │   ├── utils/            # Helpers, constants, formatters
 │   │   ├── types/            # TypeScript type definitions
+│   │   ├── main.tsx
 │   │   ├── App.tsx
-│   │   ├── routes.tsx
-│   │   └── index.tsx
+│   │   └── index.css         # Tailwind directives
 │   ├── package.json
 │   ├── tsconfig.json
 │   ├── vite.config.ts
@@ -83,51 +80,57 @@ campuscollar/
 │   ├── src/
 │   │   ├── graphql/          # GraphQL schema and resolvers
 │   │   │   ├── schema/
+│   │   │   │   ├── index.ts
 │   │   │   │   ├── job.graphql
 │   │   │   │   ├── user.graphql
 │   │   │   │   ├── payment.graphql
 │   │   │   │   └── badge.graphql
-│   │   │   └── resolvers/
-│   │   │       ├── job.ts
-│   │   │       ├── user.ts
-│   │   │       ├── payment.ts
-│   │   │       └── badge.ts
+│   │   │   ├── resolvers/
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── job.ts
+│   │   │   │   ├── user.ts
+│   │   │   │   ├── payment.ts
+│   │   │   │   └── badge.ts
+│   │   │   └── context.ts    # DataLoader factory
 │   │   ├── rest/             # REST endpoints (auth, uploads, webhooks)
 │   │   │   ├── auth.ts
 │   │   │   ├── upload.ts
 │   │   │   └── webhook.ts
 │   │   ├── services/         # Business logic layer
-│   │   │   ├── escrow.ts     # Escrow lifecycle management
+│   │   │   ├── job.ts        # Job CRUD and status transitions
 │   │   │   ├── badge.ts      # Badge issuance and verification
-│   │   │   ├── payment.ts    # USDC handling, fiat on-ramp
+│   │   │   ├── payment.ts    # USDC handling, fee calc
 │   │   │   ├── nfc.ts        # NFC challenge generation & validation
 │   │   │   └── notification.ts
-│   │   ├── models/           # PostgreSQL models (Prisma or Drizzle)
-│   │   │   ├── user.ts
-│   │   │   ├── job.ts
-│   │   │   ├── payment.ts
-│   │   │   └── badge.ts
 │   │   ├── middleware/       # Auth, rate-limiting, validation
 │   │   │   ├── auth.ts
 │   │   │   ├── rateLimit.ts
 │   │   │   └── validate.ts
 │   │   ├── stellar/          # Stellar/Soroban integration layer
-│   │   │   ├── client.ts        # Stellar RPC client
-│   │   │   ├── contracts/       # Compiled Soroban contract bindings
-│   │   │   │   ├── escrow.ts
-│   │   │   │   ├── badgeRegistry.ts
-│   │   │   │   └── jobCap.ts
-│   │   │   └── utils.ts
+│   │   │   └── utils.ts      # RPC helpers
 │   │   ├── websocket/        # WebSocket handlers (chat, job status)
 │   │   │   └── handler.ts
 │   │   ├── jobs/             # Background workers (queues, cron)
 │   │   │   ├── expiry.ts     # Expire unfunded jobs
 │   │   │   └── dispute.ts    # Dispute timeout handler
 │   │   ├── utils/
+│   │   │   ├── db.ts         # Prisma client
+│   │   │   ├── jwt.ts        # Token sign/verify
+│   │   │   ├── logger.ts     # Pino logger
+│   │   │   ├── format.ts     # Format helpers
+│   │   │   └── constants.ts  # App constants
+│   │   ├── types/
+│   │   │   └── index.d.ts    # Type augmentations
 │   │   ├── config.ts
 │   │   └── index.ts
 │   ├── prisma/
 │   │   └── schema.prisma     # Database schema
+│   ├── __tests__/            # Integration tests
+│   │   ├── auth.test.ts
+│   │   ├── job.test.ts
+│   │   ├── payment.test.ts
+│   │   └── websocket.test.ts
+│   ├── vitest.config.ts
 │   ├── package.json
 │   └── tsconfig.json
 │
