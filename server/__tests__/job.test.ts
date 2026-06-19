@@ -32,7 +32,9 @@ describe('Job lifecycle', () => {
   });
 
   afterAll(async () => {
+    await prisma.notification.deleteMany({ where: { userId: { in: [userId, workerId] } } });
     await prisma.dispute.deleteMany({ where: { job: { customerId: userId } } });
+    await prisma.message.deleteMany({ where: { job: { customerId: userId } } });
     await prisma.job.deleteMany({ where: { customerId: userId } });
     await prisma.user.deleteMany({ where: { id: { in: [userId, workerId] } } });
     await prisma.$disconnect();

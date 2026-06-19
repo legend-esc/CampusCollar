@@ -9,6 +9,7 @@ RUN npm ci
 
 FROM deps AS build
 COPY . .
+RUN npx prisma generate --schema=server/prisma/schema.prisma
 RUN npm run build
 
 FROM node:20-alpine AS runner
