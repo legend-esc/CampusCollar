@@ -58,11 +58,13 @@ describe('WebSocket handler', () => {
     await new Promise<void>((resolve, reject) => {
       ws.once('message', (raw) => {
         const msg = JSON.parse(raw.toString());
-        expect(msg.type).toBe('CONNECTED');
+        expect(msg.event).toBe('CONNECTED');
+        expect(msg.data.userId).toBe(userId);
         ws.close();
         resolve();
       });
       ws.once('error', reject);
+      ws.once('close', reject);
     });
   });
 

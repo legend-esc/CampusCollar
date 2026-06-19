@@ -53,6 +53,7 @@ export async function websocketRoutes(fastify: FastifyInstance) {
     clients.set(clientId, client);
 
     logger.info({ userId: clientId }, 'WebSocket connected');
+    socket.send(JSON.stringify({ event: 'CONNECTED', data: { userId: clientId } }));
 
     socket.on('message', async (raw: Buffer) => {
       try {
